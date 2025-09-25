@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLife Web - Calculadora de Pegada Ecológica</title>
+    <meta name="description" content="Calcule sua pegada ecológica e descubra dicas personalizadas para um estilo de vida mais sustentável">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
+    
+    <header class="header">
+        <div class="container">
+            <nav class="nav" role="navigation" aria-label="Navegação principal">
+                <div class="logo">
+                    <img src="planeta.jpg" alt="Logo EcoLife" class="logo-img">
+                    EcoLife Web
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link" data-page="home">Início</a></li>
+                    <li><a href="#" class="nav-link" data-page="questionario">Questionário</a></li>
+                    <li><a href="#" class="nav-link" data-page="historico">Histórico</a></li>
+                    <li><a href="#" class="nav-link" data-page="sobre">Sobre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" class="main">
+        <div class="container">
+            <!-- Home Page -->
+            <div id="home" class="page active">
+                <div class="hero">
+                    <h1>Calculadora de Pegada Ecológica</h1>
+                    <p>Descubra o impacto dos seus hábitos no meio ambiente.</p>
+                    <button class="btn" onclick="navigateToPage('questionario')" aria-describedby="start-description">
+                        Começar Avaliação
+                    </button>
+                    <div id="start-description" class="sr-only">
+                        Inicia o questionário para calcular sua pegada ecológica
+                    </div>
+                    <br />
+                    <img src="pegada.jpg" alt="Pegada ecológica" class="hero-img">
+                </div>
+
+                <div class="form-section">
+                    <h2>Como Funciona</h2>
+                    <p>Ecolife é uma ferramenta que mede o impacto ambiental dos padrões de consumo para o planeta.<br />
+                       Ela mede a sua pegada ecológica em hectares globais e quantos planetas (Terra) seriam<br />
+                       necessários para sustentar o seu consumo de recursos e a absorção de resíduos.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Página do Questionário -->
+            <div id="questionario" class="page">
+                <h1>Questionário de Pegada Ecológica</h1>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress" style="width: 0%"></div>
+                </div>
+
+                <form id="eco-form" novalidate>
+                    <!-- Transporte -->
+                    <div class="form-section">
+                        <h3>🚗 Transporte</h3>
+                        
+                        <div class="question">
+                            <label for="carro-freq">Com que frequência utiliza carro ou moto?</label>
+                            <div class="options" role="radiogroup" aria-labelledby="carro-freq">
+                                <label class="option">
+                                    <input type="radio" name="carro_freq" value="3" required>
+                                    <span>Sempre</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="carro_freq" value="2">
+                                    <span>Às vezes</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="carro_freq" value="1">
+                                    <span>Raramente</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="carro_freq" value="0">
+                                    <span>Nunca</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label for="transporte-publico">Você utiliza transporte público com frequência?</label>
+                            <div class="options" role="radiogroup" aria-labelledby="transporte-publico">
+                                <label class="option">
+                                    <input type="radio" name="transporte_publico" value="2" required>
+                                    <span>Nunca</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="transporte_publico" value="1">
+                                    <span>Às vezes</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="transporte_publico" value="0">
+                                    <span>Sempre</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label for="bicicleta-caminhada">Você usa bicicleta ou caminha para deslocamentos?</label>
+                            <div class="options" role="radiogroup" aria-labelledby="bicicleta-caminhada">
+                                <label class="option">
+                                    <input type="radio" name="bicicleta_caminhada" value="2" required>
+                                    <span>Nunca</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="bicicleta_caminhada" value="1">
+                                    <span>Às vezes</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="bicicleta_caminhada" value="0">
+                                    <span>Sempre</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Energia -->
+                    <div class="form-section">
+                        <h3>⚡ Consumo de Energia</h3>
+                        
+                        <div class="question">
+                            <label for="consumo-energia">Como é o consumo de energia elétrica da sua casa?</label>
+                            <div class="options" role="radiogroup" aria-labelledby="consumo-energia">
+                                <label class="option">
+                                    <input type="radio" name="consumo_energia" value="3" required>
+                                    <span>Alto</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="consumo_energia" value="2">
+                                    <span>Moderado</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="consumo_energia" value="1">
+                                    <span>Econômico</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label for="energia-alternativa">Sua residência possui energia alternativa (solar/eólica)?</label>
+                            <div class="options" role="radiogroup" aria-labelledby="energia-alternativa">
+                                <label class="option">
+                                    <input type="radio" name="energia_alternativa" value="2" required>
+                                    <span>Não</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="energia_alternativa" value="0">
+                                    <span>Sim</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label for="lampadas-led">Sua residência possui lâmpadas LED?</label>
+                            <div class="options" role="radiogroup" aria-labelledby="lampadas-led">
+                                <label class="option">
+                                    <input type="radio" name="lampadas_led" value="2" required>
+                                    <span>Não</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="lampadas_led" value="0">
+                                    <span>Sim</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label for="desligar-aparelhos">Você desliga aparelhos da tomada quando não está usando?</label>
+                            <div class="options" role="radiogroup" aria-labelledby="desligar-aparelhos">
+                                <label class="option">
+                                    <input type="radio" name="desligar_aparelhos" value="2" required>
+                                    <span>Nunca</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="desligar_aparelhos" value="1">
+                                    <span>Às vezes</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="desligar_aparelhos" value="0">
+                                    <span>Sempre</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alimentação -->
+                    <div class="form-section">
+                        <h3>🍽️ Alimentação</h3>
+                        
+                        <div class="question">
+                            <label for="carne-vermelha">Frequência de consumo de carne vermelha:</label>
+                            <div class="options" role="radiogroup" aria-labelledby="carne-vermelha">
+                                <label class="option">
+                                    <input type="radio" name="carne_vermelha" value="3" required>
+                                    <span>Diariamente</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="carne_vermelha" value="2">
+                                    <span>Algumas vezes por semana</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="carne_vermelha" value="1">
+                                    <span>Raramente</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="carne_vermelha" value="0">
+                                    <span>Nunca</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label for="industrializados">Consome alimentos industrializados com frequência?</label>
+                            <div class="options" role="radiogroup" aria-labelledby="industrializados">
+                                <label class="option">
+                                    <input type="radio" name="industrializados" value="2" required>
+                                    <span>Sim</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="industrializados" value="0">
+                                    <span>Não</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label for="produtores-locais">Compra alimentos de produtores locais?</label>
+                            <div class="options" role="radiogroup" aria-labelledby="produtores-locais">
+                                <label class="option">
+                                    <input type="radio" name="produtores_locais" value="2" required>
+                                    <span>Nunca</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="produtores_locais" value="1">
+                                    <span>Às vezes</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="produtores_locais" value="0">
+                                    <span>Sempre</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Água -->
+                    <div class="form-section">
+                        <h3>💧 Consumo de Água</h3>
+                        
+                        <div class="question">
+                            <label for="economia-agua">Você pratica economia de água em casa?</label>
+                            <div class="options" role="radiogroup" aria-labelledby="economia-agua">
+                                <label class="option">
+                                    <input type="radio" name="economia_agua" value="3" required>
+                                    <span>Nunca</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="economia_agua" value="1">
+                                    <span>Às vezes</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="economia_agua" value="0">
+                                    <span>Sempre</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <label for="captacao-agua">Sua residência capta água da chuva ou reaproveita água?</label>
+                            <div class="options" role="radiogroup" aria-labelledby="captacao-agua">
+                                <label class="option">
+                                    <input type="radio" name="captacao_agua" value="2" required>
+                                    <span>Não</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="captacao_agua" value="0">
+                                    <span>Sim</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin: 2rem 0;">
+                        <button type="submit" class="btn">Calcular Pegada Ecológica</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Página de Resultado -->
+            <div id="resultado" class="page">
+                <h1>Resultado da sua Pegada Ecológica</h1>
+                
+                <div class="result-card">
+                    <h2>Sua Pontuação</h2>
+                    <div class="score-display" id="score-display">0</div>
+                    
+                    <div class="planets-display" id="planets-display">
+                        🌍 0.0 planetas
+                    </div>
+                    
+                    <div class="classification" id="classification">
+                        Calculando...
+                    </div>
+                </div>
+
+                <div class="recommendations" id="recommendations">
+                    <h3>📝 Recomendações Personalizadas</h3>
+                    <p id="recommendation-text">Calculando suas recomendações...</p>
+                </div>
+
+                <div style="text-align: center; margin: 2rem 0;">
+                    <button class="btn" onclick="navigateToPage('questionario')">
+                        Fazer Nova Avaliação
+                    </button>
+                    <button class="btn btn-secondary" onclick="navigateToPage('historico')" style="margin-left: 1rem;">
+                        Ver Histórico
+                    </button>
+                </div>
+            </div>
+
+            <!-- página Histórico -->
+            <div id="historico" class="page">
+                <h1>Histórico de Avaliações</h1>
+                
+                <div id="history-list">
+                    <!-- Histórico será carregado via JavaScript -->
+                </div>
+            </div>
+
+            <!-- Página Sobre -->
+            <div id="sobre" class="page">
+                <div class="form-section">
+                    <h1>Sobre o EcoLife Web</h1>
+                    <br />
+                    <h2>Objetivo do Projeto</h2>
+                    <p>O EcoLife Web é uma calculadora de pegada ecológica desenvolvida como projeto integrador do curso de Ciência da Computação. O objetivo é conscientizar sobre o impacto ambiental dos nossos hábitos cotidianos e fornecer dicas personalizadas para um estilo de vida mais sustentável.</p>
+                    <br />
+                    <h2>Como são feitos os cálculos</h2>
+                    <p>Nossa metodologia avalia quatro áreas principais:</p>
+                    <ul style="margin: 1rem 0; padding-left: 2rem;">
+                        <li><strong>Transporte:</strong> Frequência de uso de veículos, transporte público e mobilidade ativa</li>
+                        <li><strong>Energia:</strong> Consumo elétrico, uso de energias alternativas e eficiência energética</li>
+                        <li><strong>Alimentação:</strong> Consumo de carne, alimentos industrializados e produção local</li>
+                        <li><strong>Água:</strong> Práticas de economia e reaproveitamento</li>
+                    </ul>
+                    
+                    <p>O cálculo do número de planetas necessários usa a fórmula: <strong>Planetas = 1 + (Pontuação ÷ 10)</strong></p>
+                    <br />
+                    <h2>Classificação</h2>
+                    <ul style="margin: 1rem 0; padding-left: 2rem;">
+                        <li><strong>0-7 pontos:</strong> Pegada Baixa - Parabéns! Seus hábitos são sustentáveis.</li>
+                        <li><strong>8-14 pontos:</strong> Pegada Moderada - Você está no caminho certo!</li>
+                        <li><strong>15+ pontos:</strong> Pegada Alta - Considere mudanças nos seus hábitos.</li>
+                    </ul>
+                    <br />
+                    <h2>Privacidade</h2>
+                    <p>Seus dados ficam armazenados apenas no seu navegador. Não coletamos informações pessoais identificáveis e não compartilhamos seus dados com terceiros. Você pode limpar seu histórico a qualquer momento através das configurações do navegador.</p>
+                    <br />
+                    <h2>Créditos</h2>
+                    <p><strong>Aluno:</strong> Fabio Issamu Takizawa</p>
+                    <p><strong>Professor Responsável:</strong> Prof. Dr. Elvio Gilberto da Silva</p>
+                    <p><strong>Curso:</strong> Ciência da Computação</p>
+                    <p><strong>Projeto Integrador:</strong> EcoLife Web - Versão 2025</p>
+                    <br />
+                    <h2>Referências</h2>
+                    <p>As perguntas e metodologia de cálculo foram baseadas em estudos sobre pegada ecológica e práticas sustentáveis reconhecidas internacionalmente.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>@ 2025 Ecolife Web - Desenvolvido por FT Software - Projeto Integrado | Unisagrado</p>
+        </div>
+    </footer>
+
+    <!-- Toast para feedback -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
